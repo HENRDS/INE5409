@@ -1,10 +1,16 @@
-C=[ -2  7 1;
-    -4  5 1;
-     4 -3 1
+C=[ 4  2  3;
+    2 -4 -1;
+   -1  1 4
   ];
-B = [-53; 
-     -41; 
-     -25];
+B = [7; 
+     1; 
+    -5];
+
+[L,U] = LUDecomp(C);
+y = RetroSubInferior(L, B);
+x = RetroSubSuperior(U, y);
+
+x
 
 function [L, U] = LUDecomp(A)
   n = size(A);
@@ -30,8 +36,7 @@ function [L, U] = LUDecomp(A)
   end
 end
 
-
-function x = SolveX(A, b)
+function x = RetroSubSuperior(A, b)
   n = size(A)(1);
   x = zeros(1, n);
   x(n) = b(n) / A(n,n);
@@ -42,7 +47,7 @@ function x = SolveX(A, b)
   end
 end
 
-function y = SolveY(A, b)
+function y = RetroSubInferior(A, b)
   n = size(A);
   y = zeros(1, n);
   y(1) = b(1) / A(1, 1);
@@ -53,8 +58,3 @@ function y = SolveY(A, b)
   end
 end
 
-[L,U] = LUDecomp(C);
-x = SolveX(U, B);
-y = SolveY(L, B);
-x
-y
