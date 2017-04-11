@@ -1,7 +1,8 @@
-A=[ -2  7 1 -53;
-    -4  5 1 -41;
-     4 -3 1 -25
+C=[ -2  7  1 -53;
+    -4 5 1 -41;
+    4 -3 1 -6
   ];
+
 
 function resvec = PivotamentoParcial (A, k, o)
   r = size(A); 
@@ -11,7 +12,7 @@ function resvec = PivotamentoParcial (A, k, o)
   for i = k + 1 : r
     if abs(A(o(i), k)) > maior
       maior = abs(A(o(i), k));
-      pivo = i
+      pivo = i;
     end
   end
   
@@ -27,10 +28,11 @@ function resmat = EliminacaoGauss(A)
   r = size(A); 
   o = [1:r];
   for k = 1 : r-1
-    o = PivotamentoParcial(A, k, o)
+    o = PivotamentoParcial(A, k, o);
     for i=k+1 : r
-      mul = A(i,k) / A(k, k);
+      mul = A(i,k) / A(k, k)
       A(i, :) = A(i, :) - mul * A(k, :) ;
+      A
     end
   end
   resmat = A;
@@ -49,9 +51,8 @@ function x = Solve(A)
     x(i) = (b(i) - soma) / A(i, i);
   end
 end
-
-A = EliminacaoGauss(A);
-x = Solve(A);
+B = EliminacaoGauss(C);
+x = Solve(B);
 x
 
 
