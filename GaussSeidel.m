@@ -10,12 +10,9 @@ function [x, iters] = GaussSeidel(A, b, prec)
     for i=1: r
       soma = 0;    
       for j=1: r
-        if (j < i)
+        if (j ~= i)
           soma += A(i, j) * x(j);
         end 
-        if (j > i)
-          soma += A(i, j) * y(j);
-        end
       end
       x(i) = (b(i) - soma) / A(i,i);
     end  

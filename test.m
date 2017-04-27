@@ -1,6 +1,3 @@
-A= [3 -1 -1;
-    1  3  1;
-    2 -2  4];
-b= [1; 5; 4];    
-
-[x,i] = GaussSeidel(A, b, 10e-5)
+f = @(x) exp(x).*sin(x) -1;
+%[x, iter] = Bissecao(f,0, 1, 1e-2)
+[x, iter] = FalsaPosicao(f,0, 1, 1e-2)
