@@ -17,6 +17,7 @@ function [xm, iter] = Bissecao(f, a, b, prec)
     end
     iter = iter + 1;
   until (abs(fxm) < prec)
+  disp(fxm);
   disp("mudanças de a: "); disp(ac);
   disp("mudanças de b: "); disp(bc);
 end
