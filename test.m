@@ -23,5 +23,5 @@ C = [4 2 3 ;
       -1 1 4];
 B =[7; 1; -5];
 [x1, i1] = GaussSeidel(C, B, 1e-6)
-[x2, i2] = SeidelComRelaxacao( 1e-6, C, B, .8)
+[x2, i2 ] = SeidelComRelaxacao( 1e-6, C, B, .8)
 % y = LUDecomp2(C, B)
