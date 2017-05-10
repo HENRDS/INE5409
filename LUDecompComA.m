@@ -1,5 +1,5 @@
 % LU decomposition using only A
-function x = LUDecomp3(A, B)
+function x = LUDecompComA(A, B)
   [r, c] = size(A);
   for k = 1 : r
     for i = k : r
@@ -41,4 +41,3 @@ function y = RetroSubInferior(A, b)
     y(i) = (b(i) - soma) / A(i, i);
   end
 end
-
