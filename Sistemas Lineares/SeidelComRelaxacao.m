@@ -13,7 +13,8 @@ function [x, iters] = SeidelComRelaxacao(prec, A, b, w)
             soma += A(i, j) * x(j);
         end
       end
-      x(i) = (1 - w) * y(i) + w * ((b(i) - soma) / A(i, i));
+      x(i) = (b(i) - soma) / A(i, i);
+      x(i) = (1 - w) * y(i) + w * x(i);
     end
     e = max(abs(x - y));
     y = x;
