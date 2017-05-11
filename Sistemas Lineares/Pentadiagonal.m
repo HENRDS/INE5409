@@ -16,11 +16,10 @@ function x = Pentadiagonal(c, d ,e, f, g, b)
       b(i + 2) -= m * b(i + 1);
     end
   end
-  x = Retrosub(c, d, e, b);
+  x = RetrosubPenta(c, d, e, b);
 end
 
-
-function x = Retrosub(c, d ,e, b)
+function x = RetrosubPenta(c, d ,e, b)
   n = size(e)(2);
   x(n) = b(n);
   x(n - 1) = (b(n - 1) - d(n - 1)) / e(n - 1);
