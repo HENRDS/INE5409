@@ -7,9 +7,13 @@ function x = TridiagonalV(d, r, t, b)
     r(k + 1) -= m * d(k);
     b(k + 1) -= m * b(k);
   end
-  
+
   printMatrix(d, r, t, b);
-  %substitution for superior diagonal
+  x = RetrosubSuperior(d, r, b);
+end
+
+function x = RetrosubSuperior(d, r, b)
+  n = size(r)(2);
   x = zeros(1, n);
   x(n) = b(n) / r(n);
   for k = n - 1 : -1 : 1
