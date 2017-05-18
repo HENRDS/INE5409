@@ -1,58 +1,42 @@
-C=[ -2  7  1 -53;
-    -4 5 1 -41;
-    4 -3 1 -6
-  ];
+function x = EliminacaoGauss(A, b)
+  r = size(A);
+  o = [1:r];
+  for k = 1 : r-1
+    o = PivotamentoParcial(A, k, o);
+    for i=k+1 : r
+      mul = A(o(i),k) / A(o(k), k)
+      A(o(i), :) = A(o(i), :) - mul * A(o(k), :) ;
+    end
+  end
+  x = RetroSubSuperior(A, b)
+end
 
 
-function resvec = PivotamentoParcial (A, k, o)
-  r = size(A); 
+function r = PivotamentoParcial (A, k, o)
+  r = size(A);
   maior = abs(A(o(k), k));
   pivo = k;
-  
   for i = k + 1 : r
     if abs(A(o(i), k)) > maior
       maior = abs(A(o(i), k));
       pivo = i;
     end
   end
-  
   if pivo > k
     aux=o(pivo);
     o(pivo)=o(k);
     o(k)=aux;
-  end 
-  resvec = o;
-end
-
-function resmat = EliminacaoGauss(A)
-  r = size(A); 
-  o = [1:r];
-  for k = 1 : r-1
-    o = PivotamentoParcial(A, k, o);
-    for i=k+1 : r
-      mul = A(i,k) / A(k, k)
-      A(i, :) = A(i, :) - mul * A(k, :) ;
-      A
-    end
   end
-  resmat = A;
+  r = o;
 end
 
-%Retrosubstituicao
-function x = Solve(A)
-  [r, c] = size(A); 
-  b = A(:,c);
-  x = [0 0 0];
-  e = c-1;
-  x(r) = b(r) / A(r,r);
-  for i = r - 1 : -1 : 1
+function x = RetroSubSuperior(A, b)
+  n = size(A)(1);
+  x = zeros(1, n);
+  x(n) = b(n) / A(n,n);
+  for i = n - 1 : -1 : 1
     j =  i + 1;
-    soma = sum(A(i, j : e) .* x(j : e));
+    soma = sum(A(i, j : n) .* x(j : n));
     x(i) = (b(i) - soma) / A(i, i);
   end
 end
-B = EliminacaoGauss(C);
-x = Solve(B);
-x
-
-

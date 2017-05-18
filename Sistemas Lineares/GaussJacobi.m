@@ -7,14 +7,14 @@ function [x, iters] = GaussJacobi(A, b, prec)
 
   while e > prec
     for i=1: r
-      soma = 0;    
+      soma = 0;
       for j=1: r
-        if (j!=i)
+        if (j~=i)
           soma += A(i, j) * y(j);
         end
       end
       x(i) = (b(i) - soma) / A(i,i);
-    end  
+    end
     e= max(abs(x - y));
     y=x;
     iters += 1;
