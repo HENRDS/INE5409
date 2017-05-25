@@ -19,28 +19,28 @@ function [xk, iter] = FalsaPosicao(f, a, b, prec)
     if fa * fxk < 0
       pa = fb / (fb + fxk);
       fa = pa * fa;
-      
-      b = xk; 
+
+      b = xk;
       fb = fxk;
-      
+
       bc = bc + 1;
     else
       pb = fa / (fa + fxk);
       fb = pb * fb;
-      
+
       a = xk;
       fa = fxk;
-      
+
       ac = ac + 1;
-    end
     iter = iter + 1;
     abs(fxk)
   until (abs(fxk) < prec)
   disp("mudanças de a: "); disp(ac);
+end
   disp("mudanças de b: "); disp(bc);
 end
 function CreatePlot(x, f)
-  
+
   y = f(x);
   plot(x, y);
   grid;
