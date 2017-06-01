@@ -1,8 +1,6 @@
-table = [-1 4; 0  1; 2 -1];
-%table(:, 2) = log(table(:, 1));
-
-a = Polinomial(table)
+px = [-1 0 2];
+py = [4 1 -1];
 x =[-1:.01:2];
-plot(x, Poli(a,x));
+plot(x, Lagrange(x, px, py));
 grid
 hold on
