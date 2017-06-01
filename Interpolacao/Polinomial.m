@@ -1,12 +1,12 @@
-function a = Polinomial(table)
-  [m,n] = size(table);
-  M = zeros(m);
-  for i = 1 : m
-    for j = 1 : m
-      M(i, j) = table(i, 1) ^ (j-1);
+function a = Polinomial(px, py)
+  n = length(px);
+  M = zeros(n);
+  for i = 1 : n
+    for j = 1 : n
+      M(i, j) = px(i) ^ (j-1);
     end
+    a = LUDecompComA(M, py);
   end
-  a = LUDecompComA(M, table(:,2));
 end
 
 % LU decomposition using only A

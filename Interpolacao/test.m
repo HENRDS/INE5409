@@ -4,3 +4,5 @@ x =[-1:.01:2];
 plot(x, Lagrange(x, px, py));
 grid
 hold on
+% plot(x, Poli(Polinomial(px, py),x), 'r')
+% hold on
