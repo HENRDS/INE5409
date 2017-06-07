@@ -10,8 +10,8 @@ function a = Polinomial(px, py)
     for j = 1 : n
       M(i, j) = px(i) ^ (j-1);
     end
-    a = EliminacaoGauss(M, py);
   end
+  a = EliminacaoGauss(M, py);
 end
 
 function x = EliminacaoGauss(A, b)
