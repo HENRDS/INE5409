@@ -15,7 +15,7 @@ function a = Polinomial(px, py)
 end
 
 function x = EliminacaoGauss(A, b)
-  r = size(A);
+  r = size(A)(1);
   o = [1:r];
   for k = 1 : r-1
     o = PivotamentoParcial(A, k, o);
@@ -49,11 +49,11 @@ end
 
 function x = RetroSubSuperior(A, b, o)
   n = size(A)(1);
-  x = zeros(1, n);
-  x(o(n)) = b(o(n)) / A(o(n),n);
+  x = zeros(n, 1);
+  x(n) = b(o(n)) / A(o(n),n);
   for i = n - 1 : -1 : 1
     j =  i + 1;
-    soma = sum(A(o(i), j : n) .* x(j : n));
+    soma = A(o(i), j : n) * x(j : n);
     x(i) = (b(o(i)) - soma) / A(o(i), i);
   end
 end

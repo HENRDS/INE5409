@@ -5,3 +5,4 @@ A = [
     ];
 b = [10; 7; 15];
 x = EliminacaoGauss(A, b)
+LUDecompComA(A,b) 
