@@ -112,7 +112,8 @@ disp('Usando Polinômio interpolador f(x):'); disp(y);
 plot(x, y, 'o');
 hold on
 
-plot(xAxis, Poli(a, xAxis));
+p = plot(xAxis, Poli(a, xAxis));
+legend(p, 'Polinômio interpolador');
 hold on
 
 y = Lagrange(velocidade, consumo, x);
@@ -121,6 +122,7 @@ plot(x, y, 'or');
 hold on
 
 plot(xAxis, Lagrange(velocidade, consumo, xAxis), 'r');
+legend('Lagrange');
 hold on
 
 y = DivDiffs(velocidade, consumo, x);
@@ -130,6 +132,7 @@ plot(x, y, 'og');
 hold on
 
 plot(xAxis, DivDiffs(velocidade, consumo, xAxis), 'g');
+legend('Diferenças Divididas de Newton');
 hold on
 
 y = spline(velocidade, consumo, x);
@@ -138,4 +141,5 @@ plot(x, y, 'oc');
 hold on
 
 plot(xAxis, spline(velocidade, consumo, xAxis), 'c');
+legend('Spline');
 hold on

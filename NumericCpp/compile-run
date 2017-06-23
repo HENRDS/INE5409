@@ -1,0 +1,13 @@
+#!/bin/bash
+name=`echo "$1" | cut -d'.' -f1`
+echo "Compile $1 --> $name"
+separator="-------------------------------------------"
+echo "$separator"
+echo "Compling..."
+if g++ -Wall -o "$name" "$1" -std=c++17
+then
+	echo "$separator"
+	echo "Running"
+	echo "$separator"
+	./"$name"
+fi
