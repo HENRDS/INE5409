@@ -5,6 +5,7 @@ function x = nofuckinidea(px, py, m)
       A(i, j) = 0;
       for k = 1 : n
         A(i, j) += (px(k)^(j-1) * px(k)^(i-1));
+        %A(i, j) += (exp(j-1) * exp(i-1));
       end
       A(j, i) = A(i, j);
     end
